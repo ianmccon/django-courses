@@ -1,0 +1,16 @@
+{% if not courses or courses|length_is:"0" %}
+<hr />
+No courses matching query found.
+<br />
+If you are having trouble figuring out the abbreviation for your department, or think we don't have your department in our database, e-mail us.
+{% endif %}
+{% for course in courses %}
+<hr />
+{{ course }}
+<br />
+Add as: 
+<a href="javascript:void(0)" onclick="addCourse('{{ course }}', {{ course.id }}, true)">current</a>
+ | 
+<a href="javascript:void(0)" onclick="addCourse('{{ course }}', {{ course.id }}, false)">completed</a>
+{% endfor %}
+<hr />

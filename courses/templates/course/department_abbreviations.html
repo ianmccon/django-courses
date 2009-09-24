@@ -1,0 +1,20 @@
+{% extends "exam/base.html" %}
+
+{% load mungify %}
+
+{% block subtitle %}Departmental Abbreviations{% endblock %}
+
+{% block content %}
+<p>The abbreviations below can be used for searching. If you have any suggestions for common abbreviations to add, please {{ "hzarka@gmail.com"|mungify:"email Hisham Zarka"}}.</p><br/>
+<table class="display">
+<tr><th width="50%">Name</th><th>Abbreviations</th></tr>
+
+{% for dept in departments %}
+<tr class="{% cycle 'even' 'odd' %}">
+    <td>{{dept.name}}</td>
+    <td>{{dept.get_all_abbrs|join:"; "}}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}
